@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | Guardians of Groundwater</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/images/leaderboard-bg.jpg'); /* Set your background image path here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        .leaderboard-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ensures the title is readable */
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the table */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        th {
+            background-color: #4BB5FF;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .menu-button {
+            background-color: #4BB5FF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .menu-button:hover {
+            background-color: #38A5D9;
+        }
+    </style>
+</head>
+<body class="leaderboard-page">
+    <div class="leaderboard-container">
+        <h1>Leaderboard</h1>
+        <table id="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+        <button class="menu-button" onclick="goBack()">Back to Game</button>
+    </div>
+
+    <script>
+        // Sample user data stored in localStorage
+        const sampleUsers = [
+            { name: "Player1", score: 15 },
+            { name: "Player2", score: 30 },
+            { name: "Player3", score: 25 },
+            { name: "Player4", score: 10 }
+        ];
+
+        // Check if "players" data is already stored, if not set the sample data
+        if (!localStorage.getItem('players')) {
+            localStorage.setItem('players', JSON.stringify(sampleUsers));
+        }
+
+        // Retrieve players data from localStorage
+        const players = JSON.parse(localStorage.getItem('players')) || [];
+
+        // Sort players based on score (high to low)
+        players.sort((a, b) => b.score - a.score);
+
+        // Function to display leaderboard
+        function displayLeaderboard() {
+            const leaderboardBody = document.getElementById('leaderboard-body');
+            leaderboardBody.innerHTML = ''; // Clear any existing content
+
+            players.forEach((player, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${player.name}</td>
+                    <td>${player.score}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            });
+        }
+
+        // Function to navigate back to the game
+        function goBack() {
+            window.location.href = 'game.html'; // Redirect back to the game page
+        }
+
+        // Call the function to display the leaderboard
+        displayLeaderboard();
+    </script>
+</body>
+</html>

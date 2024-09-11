@@ -1,0 +1,629 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}
+
+/* Home Page Background */
+body.gamepage {
+    background-image: url('../images/imagesbackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Login Page Background */
+body.loginpage {
+    background-image: url('../images/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Register Page Background */
+body.registerpage {
+    background-image: url('../images/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Background for Start-Game Page */
+body.startgame-page {
+    background-image: url('../images/start-game-background.png'); /* Use a unique background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body.gameplay-page {
+    background-image: url('../images/gameplay-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff; /* White text for better contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+}
+
+
+/* NPC Page Background */
+body.npc-page {
+    background-image: url('../images/dakargalam.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff; /* White text for better contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+}
+
+/* Quiz Page Background */
+body.quiz-page {
+    background-image: url('../images/quiz.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff; /* White text for better contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+}
+body.how-to-play-page {
+    background-image: url('../images/how-to-play-background.png'); /* Use a relevant background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff; /* White text for readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.transparent-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #33ccff;
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+
+button.menu-button {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 30px;
+    background-color: #4BB5FF;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+button.menu-button:hover {
+    background-color: #287BFF;
+}
+
+/* Input Field Styling */
+input[type="text"], select {
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #4BB5FF;
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 400px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #38D39F;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Village Selection Buttons */
+button.village-btn {
+    background-color: #4BB5FF;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 300px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button.village-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+button.village-btn:focus {
+    outline: none;
+}
+
+/* Title Styling */
+h1, h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+/* Settings Page Background */
+body.settings-page {
+    background-image: url('../images/settings.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff; /* White text for better contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+}
+
+/* Container without transparency */
+.container {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: none;
+    box-shadow: none;
+}
+
+/* Title and Animation */
+h1 {
+    color: #FFFFFF;
+    font-size: 48px;
+    margin-bottom: 15px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #33ccff, 0 0 20px #66ffcc, 0 0 30px #66ffcc, 0 0 40px #00ffff;
+    }
+    100% {
+        text-shadow: 0 0 20px #33ccff, 0 0 30px #66ffcc, 0 0 40px #00ffff, 0 0 50px #00ffff;
+    }
+}
+
+/* Form input fields */
+input[type="text"], input[type="password"] {
+    width: 80%;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    display: block;
+}
+
+/* Stacked Menu Buttons */
+.menu-button {
+    background-color: #4BB5FF;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.menu-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Button colors */
+.menu-button.login {
+    background-color: #38D39F;
+}
+
+.menu-button.register {
+    background-color: #287BFF;
+}
+
+.menu-button.forgot-password {
+    background-color: #FF5733;
+}
+
+/* Start Game Button */
+.start-game-container .menu-button {
+    background-color: #4BB5FF;
+    font-size: 18px;
+    padding: 15px 40px;
+    border-radius: 30px;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.start-game-container .menu-button:hover {
+    background-color: #287BFF;
+    transform: translateY(-5px);
+}
+
+/* Aligning everything */
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+/* Input Fields Styling */
+input[type="text"], input[type="email"], input[type="password"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 400px;
+    font-size: 18px;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #999;
+}
+.gameplay-container {
+    text-align: center;
+}
+
+.avatar-display {
+    margin: 20px 0;
+}
+
+.avatar-display img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #4BB5FF;
+}
+
+/* Adjusted Container for Icons */
+.options-icons {
+    display: flex;
+    justify-content: space-evenly; /* Ensure even spacing between icons */
+    align-items: center; /* Align icons vertically */
+    margin: 20px auto; /* Center the row of icons */
+    width: 100%; /* Ensure full width for flexbox */
+    max-width: 1200px; /* Limit maximum width */
+    flex-wrap: nowrap; /* Prevent wrapping, force all icons into one row */
+}
+
+/* Circle Icons */
+.option-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100px; /* Limit the width of the buttons */
+}
+
+.option-btn img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Make the icons circular */
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for effect */
+}
+
+.option-btn p {
+    color: #fff; /* Change text color to white */
+    font-size: 14px; /* Ensure uniform font size */
+    margin-top: 10px;
+    text-align: center; /* Center align the text */
+}
+
+.ic-text {
+    color: #fff; /* White text */
+}
+
+.option-btn:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+
+.npc-interactions, .status-updates {
+    margin-top: 20px;
+}
+
+/* Icon Description Text Color */
+.option-btn p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff; /* White color for better visibility */
+    font-weight: bold; /* Match the bold style from the image */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Adding shadow similar to the example */
+}
+
+/* Status Updates Section */
+.status-updates {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+/* Back to Game Button */
+.back-to-game-btn {
+    margin-top: 30px;
+    background-color: #38D39F;
+    padding: 15px 40px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-to-game-btn:hover {
+    background-color: #2BAF7A;
+    transform: translateY(-3px);
+}
+
+/* Adjust Icon Buttons */
+.icon-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.icon-button {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.icon-button img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.icon-button:hover {
+    transform: translateY(-5px);
+}
+
+/* Specific Button Styles */
+button.menu-button.login {
+    background-color: #38D39F;
+}
+
+button.menu-button.register {
+    background-color: #287BFF;
+}
+
+button.menu-button.forgot-password {
+    background-color: #FF5733;
+}
+
+button.menu-button:hover {
+    background-color: #28A085;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Leaderboard Section */
+#leaderboard {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 24px;
+}
+
+#leaderboard div {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Profile Page Specific Styles */
+.profile-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 20px;
+    color: white;
+}
+
+.profile-info {
+    margin-bottom: 40px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-info h2 {
+    margin: 10px 0;
+    font-size: 28px;
+}
+
+.profile-info p {
+    font-size: 20px;
+}
+
+.profile-edit {
+    margin-bottom: 30px;
+}
+
+.profile-edit input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 300px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    color: #333;
+}
+.option-btn img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Makes the icon circular */
+    background-color: #ffffff; /* You can adjust the background color */
+    padding: 10px; /* Adds space between the image and the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds shadow for depth */
+    transition: transform 0.2s ease-in-out; /* Adds smooth hover effect */
+}
+
+.option-btn:hover img {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* You can style the container of the buttons as well */
+.options-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.option-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.option-btn p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333; /* Adjust this according to your design */
+}
+
+
+.profile-navigation {
+    margin-top: 30px;
+}
+
+.profile-navigation button {
+    margin: 5px;
+}
+
+/* Score Display (for game.html) */
+#score-display {
+    font-size: 28px;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Aligning quiz options in a row */
+.options-container {
+    display: flex;
+    justify-content: center; /* Aligns buttons in the center */
+    gap: 20px; /* Space between each button */
+    flex-wrap: wrap; /* Ensures the buttons wrap if the screen is too narrow */
+    margin-top: 20px;
+}
+
+/* Styling for each option button */
+.options-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4BB5FF;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.options-container button:hover {
+    background-color: #007bff; /* Changes color on hover */
+}
+
+/* For small screens, make sure the buttons stack if needed */
+@media (max-width: 600px) {
+    .options-container {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center;
+    }
+}
+
+/* Game Area Styles */
+#game-area {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+
+/* Button Styles for Profile and Login/Register */
+button.menu-button {
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button.menu-button:hover {
+    background-color: #28A085;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .menu-button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+        width: 90%;
+        font-size: 16px;
+    }
+}

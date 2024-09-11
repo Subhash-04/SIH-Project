@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Guardians of Groundwater</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>User Profile</h1>
+
+        <!-- User Profile Information Display -->
+        <div id="user-profile-info">
+            <p id="username-display">Username: Guest</p>
+            <p id="name-display">Name: John Doe</p>
+            <p id="email-display">Email: guest@example.com</p>
+            <p id="score-display">Score: 0</p>
+            <button id="edit-profile-button" class="menu-button">Edit Profile</button>
+        </div>
+
+        <!-- Edit Profile Section -->
+        <div id="edit-profile-section" style="display: none;">
+            <h2>Edit Profile</h2>
+            <input type="text" id="edit-username" placeholder="Edit Username">
+            <input type="text" id="edit-name" placeholder="Edit Name">
+            <input type="email" id="edit-email" placeholder="Edit Email">
+            <button class="menu-button" onclick="saveProfile()">Save Profile</button>
+        </div>
+
+        <!-- Back to Game Button -->
+        <button class="menu-button" onclick="goBack()">Back to Game</button>
+    </div>
+
+    <script>
+        // Load user profile information from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserProfile();
+        });
+
+        function loadUserProfile() {
+            const user = JSON.parse(localStorage.getItem('user')) || {
+                username: "Guest",
+                name: "John Doe",
+                email: "guest@example.com",
+                score: 0
+            };
+
+            // Display user data
+            document.getElementById('username-display').textContent = `Username: ${user.username}`;
+            document.getElementById('name-display').textContent = `Name: ${user.name}`;
+            document.getElementById('email-display').textContent = `Email: ${user.email}`;
+            document.getElementById('score-display').textContent = `Score: ${user.score}`;
+        }
+
+        // Function to save the updated profile
+        function saveProfile() {
+            const updatedUsername = document.getElementById('edit-username').value || document.getElementById('username-display').textContent.split(": ")[1];
+            const updatedName = document.getElementById('edit-name').value || document.getElementById('name-display').textContent.split(": ")[1];
+            const updatedEmail = document.getElementById('edit-email').value || document.getElementById('email-display').textContent.split(": ")[1];
+
+            // Get current score
+            const score = document.getElementById('score-display').textContent.split(": ")[1];
+
+            // Save the updated profile back to localStorage
+            const user = {
+                username: updatedUsername,
+                name: updatedName,
+                email: updatedEmail,
+                score: parseInt(score)
+            };
+
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Reload the profile information
+            loadUserProfile();
+            document.getElementById('edit-profile-section').style.display = 'none';
+            document.getElementById('user-profile-info').style.display = 'block';
+        }
+
+        // Event listener to handle "Edit Profile" button visibility
+        document.getElementById('edit-profile-button').addEventListener('click', function() {
+            document.getElementById('edit-profile-section').style.display = 'block';
+            document.getElementById('user-profile-info').style.display = 'none';
+        });
+
+        // Function to go back to the game
+        function goBack() {
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>

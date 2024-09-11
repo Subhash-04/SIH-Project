@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Guardians of Groundwater</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="registerpage">
+
+    <div class="container">
+        <h1>Create an Account</h1>
+        <form id="registerForm">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <p id="username-req" class="info-text">Username must be alphanumeric and between 4-15 characters.</p>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <p id="password-req" class="info-text">Password must be at least 8 characters and include 1 uppercase, 1 number, and 1 symbol.</p>
+            <button type="submit" class="menu-button register">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('register-username').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+
+            // Username validation
+            const usernameRegex = /^[a-zA-Z0-9]{4,15}$/;
+            if (!usernameRegex.test(username)) {
+                alert("Username must be alphanumeric and between 4-15 characters.");
+                return;
+            }
+
+            // Password validation
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long, include 1 uppercase letter, 1 number, and 1 symbol.");
+                return;
+            }
+
+            const newUser = { username, email, password, score: 0, isLoggedIn: false };
+            localStorage.setItem('user', JSON.stringify(newUser));
+            alert('Registration successful! Please login.');
+            window.location.href = 'login.html'; // Redirect to login page after registration
+        });
+    </script>
+</body>
+</html>

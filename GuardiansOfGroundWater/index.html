@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guardians of Groundwater</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Apply background image styling */
+        body.index {
+            background-image: url('assets/images/image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+    
+    </style>
+</head>
+<body class="index">
+
+    <div class="container">
+        <h1>Welcome to Guardians of Groundwater</h1>
+        <p>Save the planet by managing and conserving groundwater resources.</p>
+
+        <div class="menu">
+            <button class="menu-button" onclick="redirectToLogin()">Start Your Journey</button>
+        </div>
+    </div>
+
+    <script>
+        // Redirect to login page
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+
+        // Optional auto-redirect if needed:
+        window.onload = function() {
+            setTimeout(function() {
+                redirectToLogin();
+            }, 5000); // Automatically redirect after 5 seconds
+        }
+    </script>
+
+</body>
+</html>

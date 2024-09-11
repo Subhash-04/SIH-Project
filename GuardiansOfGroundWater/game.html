@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardians of Groundwater - Game</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body class="gamepage">
+
+    <div class="container">
+        <h1>Guardians of Groundwater</h1>
+
+        <button class="menu-button start-game">Start Your Journey</button>
+        <button class="menu-button show-tutorial">How to Play</button>
+        <button class="menu-button leaderboard">Leaderboard</button>
+
+        <div class="icon-buttons">
+            <div class="icon-button water-tutorial">
+                <img src="assets/images/water-icon.png" alt="Water Tutorial">
+            </div>
+            <div class="icon-button play-quiz">
+                <img src="assets/images/play-icon.png" alt="Play Quiz">
+            </div>
+            <div class="icon-button settings">
+                <img src="assets/images/settings-icon.png" alt="Settings">
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to handle button functionality -->
+    <script>
+        // Start game functionality
+        document.querySelector('.start-game').addEventListener('click', function() {
+            window.location.href = 'start-game.html'; // Redirect to the start-game page
+        });
+
+        // Show tutorial functionality
+        document.querySelector('.show-tutorial').addEventListener('click', function() {
+        window.location.href = 'how-to-play.html'; // Link to the How to Play page
+    });
+        // Leaderboard functionality
+        document.querySelector('.leaderboard').addEventListener('click', function() {
+            window.location.href = 'leaderboard.html'; // Redirect to leaderboard page
+        });
+
+        // Water tutorial button functionality
+        document.querySelector('.water-tutorial').addEventListener('click', function() {
+            window.location.href = 'npc.html'; // Redirect to NPC page
+        });
+
+        // Play quiz functionality
+        document.querySelector('.play-quiz').addEventListener('click', function() {
+            window.location.href = 'quiz-level-1.html'; // Redirect to quiz level 1
+        });
+
+        // Settings button functionality
+        document.querySelector('.settings').addEventListener('click', function() {
+            window.location.href = 'settings.html'; // Redirect to settings page
+        });
+        function updateScore(newScore) {
+    const playerName = localStorage.getItem('playerName') || 'Anonymous';
+    let players = JSON.parse(localStorage.getItem('players')) || [];
+
+    // Check if player already exists in the leaderboard
+    const existingPlayerIndex = players.findIndex(player => player.name === playerName);
+
+    if (existingPlayerIndex >= 0) {
+        // Update the player's score if they exist
+        players[existingPlayerIndex].score = Math.max(players[existingPlayerIndex].score, newScore); // Ensure max score is stored
+    } else {
+        // Add a new player entry if they don't exist
+        players.push({ name: playerName, score: newScore });
+    }
+
+    // Save the updated players array back to localStorage
+    localStorage.setItem('players', JSON.stringify(players));
+}
+
+    </script>
+
+</body>
+</html>

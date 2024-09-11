@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian of Groundwater - Welcome</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="npc-page">
+    <div class="container npc-container">
+        <h1 class="npc-title">Welcome, Brave Guardian!</h1>
+        <p>
+            I am Dakargalam, your guide in the protection of Earth's hidden treasure: groundwater. This vital resource flows
+            beneath the surface, stored in aquifers, providing nearly half of the world’s drinking water and supporting agriculture,
+            ecosystems, and industry. Groundwater is replenished by rainfall and surface water, but overuse and pollution are
+            depleting and contaminating it at alarming rates. Without proper care, this resource could become scarce, affecting life
+            on Earth. Your role as a guardian is essential in preserving groundwater for future generations, ensuring balance and
+            sustainability for all.
+        </p>
+        <button id="playAudio" class="menu-button">Play Welcome Message</button>
+        <button class="menu-button" onclick="goBack()">Back to Game</button>
+    </div>
+
+    <audio id="audio" src="assets/sounds/npc.mp3"></audio>
+
+    <script>
+        document.getElementById('playAudio').addEventListener('click', function() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        });
+
+        // Back to Game functionality
+        document.querySelector('.back-to-game').addEventListener('click', function() {
+            window.location.href = 'game.html'; // Redirect to the main game page
+        });
+        function goBack() {
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>

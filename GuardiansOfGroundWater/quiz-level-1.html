@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Level 1 | Guardians of Groundwater</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 150px; /* Adjust this value to move content down */
+        }
+    </style>
+</head>
+<body class="quiz-page">
+    <div class="container quiz-container">
+        <h1 class="quiz-title">Level 1: Groundwater Quiz</h1>
+        <form id="quizForm">
+            <div id="question-container"></div>
+            <button type="submit" class="menu-button quiz-submit-btn">Submit Answers</button>
+        </form>
+        <p id="feedback" class="quiz-feedback"></p>
+
+        <!-- Next Level Button (hidden initially) -->
+        <button id="nextLevelBtn" class="menu-button" style="display:none;" onclick="goToNextLevel()">Next Level</button>
+
+        <!-- Back to Home Button -->
+        <button class="menu-button" onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        // Questions for Level 3
+        const quizQuestions = [
+            { question: "What is groundwater?", options: ["Water stored underground", "Water from rivers", "Ocean water"], answer: 0 },
+            { question: "Which is the primary source of groundwater?", options: ["Rainfall", "Lakes", "Seas"], answer: 0 },
+            { question: "How does groundwater get replenished?", options: ["Rainfall", "Snowfall", "Glaciers"], answer: 0 },
+            { question: "What percentage of Earth’s water is groundwater?", options: ["30%", "60%", "1%"], answer: 0 },
+            { question: "Which of the following is a threat to groundwater?", options: ["Pollution", "Sunlight", "Winds"], answer: 0 }
+        ];
+
+        let userAnswers = [];
+
+        // Load questions dynamically
+        function loadQuestions() {
+            const questionContainer = document.getElementById('question-container');
+            quizQuestions.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = "quiz-question";
+                questionElement.innerHTML = `<h3>${q.question}</h3>`;
+                q.options.forEach((option, optIndex) => {
+                    questionElement.innerHTML += `
+                        <label>
+                            <input type="radio" name="question${index}" value="${optIndex}">
+                            ${option}
+                        </label><br>`;
+                });
+                questionContainer.appendChild(questionElement);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuestions();
+
+            document.getElementById('quizForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                userAnswers = quizQuestions.map((q, index) => {
+                    const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                    return selectedOption ? parseInt(selectedOption.value) : null;
+                });
+
+                const correctAnswers = quizQuestions.filter((q, index) => q.answer === userAnswers[index]).length;
+
+                if (correctAnswers === quizQuestions.length) {
+                    document.getElementById('feedback').textContent = "Congratulations! You answered all questions correctly!";
+                    document.getElementById('nextLevelBtn').style.display = 'block';
+                    completeLevel(3); // Update this for the current level
+                } else {
+                    document.getElementById('feedback').textContent = `You answered ${correctAnswers} out of ${quizQuestions.length} correctly. Try again!`;
+                }
+            });
+        });
+
+        function completeLevel(level) {
+            const user = JSON.parse(localStorage.getItem('user')) || { score: 0, level: 1 };
+
+            // If user completes this level for the first time
+            if (user.level === level) {
+                user.score += 5; // Add score only if this level is being completed for the first time
+                user.level = level + 1; // Move to next level
+                localStorage.setItem('user', JSON.stringify(user));
+
+                setTimeout(() => {
+                    window.location.href = `quiz-level-${user.level}.html`;
+                }, 2000);
+            } else {
+                alert("You have already completed this level!");
+            }
+        }
+
+        function goToNextLevel() {
+            const user = JSON.parse(localStorage.getItem('user')) || { level: 3 };
+            window.location.href = `quiz-level-${user.level}.html`;
+        }
+
+        function goBack() {
+            window.location.href = 'game.html';
+        }
+    </script>
+
+</body>
+</html>

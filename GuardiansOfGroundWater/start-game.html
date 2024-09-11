@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardians of Groundwater - Start Game</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px; /* Adjust this value to move content down */
+        }
+    </style>
+</head>
+<body class="startgame-page">
+    <div class="container">
+        <h1>Guardian Avatar & Village Selection</h1>
+        <!-- Avatar Selection -->
+        <div class="avatar-selection">
+            <label for="avatar-name">Name:</label>
+            <input type="text" id="avatar-name" placeholder="Enter your name" />
+
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <!-- Village Selection -->
+        <h2>Select Your Village</h2>
+        <div class="village-options">
+            <button class="village-btn" data-village="village1">Village 1</button>
+            <button class="village-btn" data-village="village2">Village 2</button>
+            <button class="village-btn" data-village="village3">Village 3</button>
+        </div>
+
+
+
+        <button class="menu-button" id="proceed-gameplay">Proceed to Gameplay</button>
+        <button class="menu-button" onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        let selectedVillage = "village1";
+        const villageButtons = document.querySelectorAll('.village-btn');
+        villageButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                selectedVillage = this.dataset.village;
+                alert(`You selected ${selectedVillage}`);
+            });
+        });
+
+        document.getElementById('proceed-gameplay').addEventListener('click', function() {
+            const playerName = document.getElementById('avatar-name').value;
+            const gender = document.getElementById('gender').value;
+
+            if (!playerName) {
+                alert("Please enter a name for your avatar.");
+                return;
+            }
+
+            // Save player data in localStorage (or pass it to the gameplay page)
+            localStorage.setItem('playerName', playerName);
+            localStorage.setItem('gender', gender);
+            localStorage.setItem('village', selectedVillage);
+
+            window.location.href = 'gameplay.html'; // Redirect to gameplay page
+        });
+        function goBack() {
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>

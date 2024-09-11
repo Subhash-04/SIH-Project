@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Guardians of Groundwater</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="settings-page">
+
+    <div class="container settings-container">
+        <h1 class="settings-title">Settings</h1>
+
+        <!-- User Profile Information Display -->
+        <div id="user-profile-info" class="profile-info">
+            <h2>User Profile</h2>
+            <p id="username-display">Username: </p>
+            <p id="name-display">Name: </p>
+            <p id="email-display">Email: </p>
+            <p id="score-display">Score: </p>
+            <button id="edit-profile-button" class="menu-button">Edit Profile</button>
+        </div>
+
+        <!-- Edit Profile Section -->
+        <div id="edit-profile-section" class="profile-edit" style="display: none;">
+            <h2>Edit Profile</h2>
+            <input type="text" id="edit-username" placeholder="Edit Username">
+            <input type="text" id="edit-name" placeholder="Edit Name">
+            <input type="email" id="edit-email" placeholder="Edit Email">
+            <button class="menu-button" onclick="saveProfile()">Save Profile</button>
+            <button class="menu-button" onclick="cancelEdit()">Cancel</button>
+        </div>
+
+        <!-- Back to Game Button -->
+        <button class="menu-button" onclick="goBack()">Back to Home</button>
+
+        <!-- Logout Button -->
+        <button class="menu-button" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserProfile();
+        });
+
+        function loadUserProfile() {
+            const user = JSON.parse(localStorage.getItem('user')) || {
+                username: "Guest",
+                name: "John Doe",
+                email: "guest@example.com",
+                score: 0
+            };
+
+            document.getElementById('username-display').textContent = `Username: ${user.username}`;
+            document.getElementById('name-display').textContent = `Name: ${user.name || 'Not Set'}`;
+            document.getElementById('email-display').textContent = `Email: ${user.email}`;
+            document.getElementById('score-display').textContent = `Score: ${user.score}`;
+        }
+
+        function saveProfile() {
+            const updatedUsername = document.getElementById('edit-username').value || document.getElementById('username-display').textContent.split(": ")[1];
+            const updatedName = document.getElementById('edit-name').value || document.getElementById('name-display').textContent.split(": ")[1];
+            const updatedEmail = document.getElementById('edit-email').value || document.getElementById('email-display').textContent.split(": ")[1];
+            const score = document.getElementById('score-display').textContent.split(": ")[1];
+
+            const user = {
+                username: updatedUsername,
+                name: updatedName,
+                email: updatedEmail,
+                score: parseInt(score)
+            };
+
+            localStorage.setItem('user', JSON.stringify(user));
+
+            loadUserProfile();
+            document.getElementById('edit-profile-section').style.display = 'none';
+            document.getElementById('user-profile-info').style.display = 'block';
+        }
+
+        document.getElementById('edit-profile-button').addEventListener('click', function() {
+            document.getElementById('edit-profile-section').style.display = 'block';
+            document.getElementById('user-profile-info').style.display = 'none';
+        });
+
+        function cancelEdit() {
+            document.getElementById('edit-profile-section').style.display = 'none';
+            document.getElementById('user-profile-info').style.display = 'block';
+        }
+
+        function goBack() {
+            window.location.href = 'game.html';
+        }
+
+
+        // Function to handle logout
+function logout() {
+    // Only clear session-related data (like login status), not the credentials
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('currentUser'); // You can use 'currentUser' for tracking logged-in status
+
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Play - Page 2</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="how-to-play-page">
+    <div class="transparent-container">
+        <h2>Groundwater Management</h2>
+        <p>As the village guardian, you have the following options to keep groundwater levels stable.</p>
+        <ul>
+            <li><strong>Use Irrigation</strong>: Irrigation helps water crops, but it reduces groundwater levels.</li>
+            <li><strong>Build Recharge Structure</strong>: Build structures like check dams to increase groundwater levels.</li>
+            <li><strong>Water-Saving Techniques</strong>: Slightly increase groundwater levels by conserving resources.</li>
+            <li><strong>Test Water Quality</strong>: Check whether the water is clean or polluted.</li>
+            <li><strong>Add Polluted Chemicals</strong>: Introduces harmful chemicals to lower water quality.</li>
+            <li><strong>Clean Water</strong>: Implement filtration systems to clean polluted water.</li>
+            <li><strong>Manage Crops</strong>: Manage your crops effectively to avoid wasting water.</li>
+        </ul>
+
+        <h2>NPC Interactions</h2>
+        <p>Throughout the game, you'll interact with NPCs who provide guidance on managing water resources. Pay attention to their advice!</p>
+
+        <!-- Navigation back to Page 1 -->
+        <div class="navigation-buttons">
+            <button class="menu-button" onclick="goBack()">Back to Page 1</button>
+            <button class="menu-button" onclick="goToGame()">Back to Game</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = 'how-to-play.html';
+        }
+
+        function goToGame() {
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardians of Groundwater - Gameplay</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px; /* Adjust this value to move content down */
+        }
+    </style>
+</head>
+<body id="gameplay-body" class="gameplay-page">
+    <div class="container gameplay-container">
+        <h1>Manage Your Village</h1>
+
+        <!-- Avatar display -->
+        <div class="avatar-display">
+            <h2>Your Avatar</h2>
+            <img src="" alt="Player Avatar" id="player-avatar">
+            <p>Name: <span id="avatar-name"></span></p>
+        </div>
+
+        <!-- Groundwater level indicator -->
+        <div class="groundwater-level">
+            <p>Current Groundwater Level: <span id="groundwater-indicator">100%</span></p>
+        </div>
+
+        <!-- Water quality level indicator -->
+        <div class="water-quality-level">
+            <p>Current Water Quality: <span id="water-quality-indicator">Safe</span></p>
+        </div>
+
+        <!-- Options for Groundwater Conservation -->
+        <div class="conservation-options">
+            <h2>Groundwater Conservation</h2>
+            <div class="options-icons">
+                <button class="option-btn" data-action="irrigate">
+                    <img src="assets/images/irrigation-icon.png" alt="Irrigation">
+                    <p class= "ic-text">Use Irrigation</p>
+                </button>
+                <button class="option-btn" data-action="recharge">
+                    <img src="assets/images/recharge-icon.png" alt="Recharge">
+                    <p class= "ic-text">Build Recharge Structure</p>
+                </button>
+                <button class="option-btn" data-action="save-water">
+                    <img src="assets/images/save-water-icon.png" alt="Save Water">
+                    <p class= "ic-text">Water-Saving Techniques</p>
+                </button>
+                <!-- Additional options -->
+                <button class="option-btn" data-action="test-water">
+                    <img src="assets/images/test-water-icon.png" alt="Test Water">
+                    <p class= "ic-text">Test Water Quality</p>
+                </button>
+                <button class="option-btn" data-action="manage-crops">
+                    <img src="assets/images/manage-crops-icon.png" alt="Manage Crops">
+                    <p class= "ic-text">Manage Crops</p>
+                </button>
+                <button class="option-btn" data-action="pollute-water">
+                    <img src="assets/images/pollute-water-icon.png" alt="Pollute Water">
+                    <p class= "ic-text">Add Polluted Chemicals</p>
+                </button>
+                <button class="option-btn" data-action="clean-water">
+                    <img src="assets/images/clean-water-icon.png" alt="Clean Water">
+                    <p class= "ic-text">Clean Water</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- NPC Interactions and Challenges -->
+        <div class="npc-interactions">
+            <p>NPC: <span id="npc-message">Keep groundwater levels stable to ensure your crops thrive!</span></p>
+        </div>
+
+        <!-- Status Updates -->
+        <div class="status-updates">
+            <p>Status: <span id="status-message">All systems functioning normally.</span></p>
+        </div>
+
+        <button class="menu-button" onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        // Retrieve player info from localStorage
+        const playerName = localStorage.getItem('playerName') || "Player";
+        const avatarGender = localStorage.getItem('avatarGender') || 'male';
+        const selectedVillage = localStorage.getItem('selectedVillage') || '1';
+
+        // Display the correct avatar based on gender
+        const avatarImage = document.getElementById('player-avatar');
+        const avatarName = document.getElementById('avatar-name');
+        avatarName.textContent = playerName;
+
+        if (avatarGender === 'female') {
+            avatarImage.src = 'assets/images/female-avatar.png'; // Path to the female avatar image
+        } else {
+            avatarImage.src = 'assets/images/male-avatar.png'; // Path to the male avatar image
+        }
+
+        // Change the background based on selected village
+        const gameplayBody = document.getElementById('gameplay-body');
+
+        if (selectedVillage === '1') {
+            gameplayBody.style.backgroundImage = "url('assets/images/village1-background.png')";
+        } else if (selectedVillage === '2') {
+            gameplayBody.style.backgroundImage = "url('assets/images/village2-background.png')";
+        } else if (selectedVillage === '3') {
+            gameplayBody.style.backgroundImage = "url('assets/images/village3-background.png')";
+        }
+
+        // Option buttons functionality for groundwater and water quality management
+        let groundwaterLevel = 100;
+        let waterQualityLevel = 100; // Water quality level from 0 to 100
+        const groundwaterIndicator = document.getElementById('groundwater-indicator');
+        const waterQualityIndicator = document.getElementById('water-quality-indicator');
+        const statusMessage = document.getElementById('status-message');
+
+        document.querySelectorAll('.option-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const action = this.getAttribute('data-action');
+
+                if (action === 'irrigate') {
+                    groundwaterLevel -= 10;
+                    statusMessage.textContent = 'You used irrigation, groundwater level decreased!';
+                } else if (action === 'recharge') {
+                    groundwaterLevel += 15;
+                    statusMessage.textContent = 'You built recharge structures, groundwater level increased!';
+                } else if (action === 'save-water') {
+                    groundwaterLevel += 5;
+                    statusMessage.textContent = 'You applied water-saving techniques, groundwater level slightly increased!';
+                } else if (action === 'test-water') {
+                    // Show water quality status
+                    if (waterQualityLevel < 50) {
+                        waterQualityIndicator.textContent = 'Unsafe';
+                        statusMessage.textContent = 'Water quality is poor! Clean the water!';
+                    } else {
+                        waterQualityIndicator.textContent = 'Safe';
+                        statusMessage.textContent = 'Water quality is good!';
+                    }
+                } else if (action === 'manage-crops') {
+                    statusMessage.textContent = 'You managed the crops effectively, no water wastage!';
+                } else if (action === 'pollute-water') {
+                    waterQualityLevel -= 30;
+                    waterQualityLevel = Math.max(0, waterQualityLevel);
+                    statusMessage.textContent = 'You added polluted chemicals, water quality decreased!';
+                } else if (action === 'clean-water') {
+                    waterQualityLevel += 20;
+                    waterQualityLevel = Math.min(100, waterQualityLevel); // Limit the water quality to a maximum of 100
+                    statusMessage.textContent = `You cleaned the water, water quality increased to ${waterQualityLevel}%!`;
+                }
+
+                groundwaterLevel = Math.max(0, Math.min(100, groundwaterLevel)); // Limit groundwater between 0% and 100%
+                groundwaterIndicator.textContent = groundwaterLevel + '%';
+            });
+        });
+
+        function goBack() {
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>
