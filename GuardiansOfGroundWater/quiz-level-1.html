@@ -94,7 +94,7 @@
                 localStorage.setItem('user', JSON.stringify(user));
 
                 setTimeout(() => {
-                    window.location.href = `quiz-level-${user.level}.html`;
+                    window.location.href = `quiz-level-2.html`;
                 }, 2000);
             } else {
                 alert("You have already completed this level!");
@@ -103,7 +103,7 @@
 
         function goToNextLevel() {
             const user = JSON.parse(localStorage.getItem('user')) || { level: 3 };
-            window.location.href = `quiz-level-${user.level}.html`;
+            window.location.href = `quiz-level-2.html`;
         }
 
         function goBack() {
