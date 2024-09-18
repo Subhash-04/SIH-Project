@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Level 4 | Guardians of Groundwater</title>
+    <title>Quiz - Level 3 | Guardians of Groundwater</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         body {
@@ -17,7 +17,7 @@
 </head>
 <body class="quiz-page">
     <div class="container quiz-container">
-        <h1 class="quiz-title">Level 4: Groundwater Quiz</h1>
+        <h1 class="quiz-title">Level 3: Groundwater Quiz</h1>
         <form id="quizForm">
             <div id="question-container"></div>
             <button type="submit" class="menu-button quiz-submit-btn">Submit Answers</button>
@@ -34,13 +34,12 @@
     <script>
         // Questions for Level 3
         const quizQuestions = [
-        { question: "Which method is used to artificially recharge groundwater?", options: ["Rainwater harvesting", "Digging wells", "Watering plants"], answer: 0 },
-        { question: "What is the major cause of groundwater pollution in urban areas?", options: ["Sewage leaks", "Sunlight exposure", "Natural disasters"], answer: 0 },
-        { question: "Which of the following is an indicator of poor water quality?", options: ["Presence of nitrates", "Lack of sunlight", "Cold temperature"], answer: 0 },
-        { question: "What happens to the groundwater table during a drought?", options: ["It drops", "It rises", "It stays the same"], answer: 0 },
-        { question: "How can individuals help in conserving groundwater?", options: ["Using drip irrigation", "Taking longer showers", "Throwing garbage in rivers"], answer: 0 }
+        { question: "Which of the following can cause groundwater contamination?", options: ["Overuse of fertilizer", "Wind erosion", "Sunlight"], answer: 0 },
+        { question: "What is the term for the layer of soil that holds groundwater?", options: ["Aquifer", "Basin", "Reservoir"], answer: 0 },
+        { question: "How long can it take for groundwater to recharge naturally?", options: ["Months to years", "Hours", "Days"], answer: 0 },
+        { question: "What is the process by which plants lose water to the atmosphere?", options: ["Transpiration", "Evaporation", "Condensation"], answer: 0 },
+        { question: "Which human activity most commonly depletes groundwater?", options: ["Over-pumping for agriculture", "Recreational swimming", "Industrial fishing"], answer: 0 }
     ];
-
 
         let userAnswers = [];
 
@@ -95,7 +94,7 @@
                 localStorage.setItem('user', JSON.stringify(user));
 
                 setTimeout(() => {
-                    window.location.href = `quiz-level-5.html`;
+                    window.location.href = `quiz-level-4.html`;
                 }, 2000);
             } else {
                 alert("You have already completed this level!");
@@ -104,7 +103,7 @@
 
         function goToNextLevel() {
             const user = JSON.parse(localStorage.getItem('user')) || { level: 3 };
-            window.location.href = `quiz-level-5.html`;
+            window.location.href = `quiz-level-4.html`;
         }
 
         function goBack() {
